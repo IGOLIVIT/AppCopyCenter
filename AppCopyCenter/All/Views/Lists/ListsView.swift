@@ -20,11 +20,33 @@ struct ListsView: View {
             
             VStack {
                 
-                Text("Checklists")
-                    .foregroundColor(.black)
-                    .font(.system(size: 22, weight: .semibold))
-                    .padding(.bottom, 30)
-                
+                ZStack {
+                    
+                    Text("Checklists")
+                        .foregroundColor(.black)
+                        .font(.system(size: 22, weight: .semibold))
+                 
+                    HStack {
+                        
+                        Button(action: {
+                            
+                            withAnimation(.spring()) {
+                                
+                                viewModel.isAdd = true
+                            }
+                            
+                        }, label: {
+                            
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                                .font(.system(size: 18, weight: .medium))
+                        })
+                        
+                        Spacer()
+                    }
+                }
+                .padding(.bottom, 30)
+
                 if viewModel.lists.isEmpty {
                     
                     VStack(spacing: 15) {

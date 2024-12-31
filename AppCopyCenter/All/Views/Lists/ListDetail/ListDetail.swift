@@ -169,6 +169,79 @@ struct ListDetail: View {
             }
             .padding()
         }
+        .overlay(
+            
+            ZStack {
+                
+                Color.black.opacity(viewModel.isDelete ? 0.5 : 0)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        
+                        withAnimation(.spring()) {
+                            
+                            viewModel.isDelete = false
+                        }
+                    }
+                
+                VStack(spacing: 19) {
+
+                    Text("Do you want to delete?")
+                        .foregroundColor(.black)
+                        .font(.system(size: 17, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                    
+                    HStack {
+                        
+                        Button(action: {
+                            
+                            CoreDataStack.shared.deleteList(withChName: viewModel.selectedList?.chName ?? "", completion: {
+                                
+                                viewModel.fetchLists()
+                            })
+                            
+                            withAnimation(.spring()) {
+                                
+                                viewModel.isDelete = false
+                                viewModel.isDetail = false
+                            }
+                            
+                        }, label: {
+                            
+                            Text("Delete")
+                                .foregroundColor(.red)
+                                .font(.system(size: 18, weight: .semibold))
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 45)
+                            
+                        })
+                        
+                        Button(action: {
+                            
+                            withAnimation(.spring()) {
+                                
+                                viewModel.isDelete = false
+                            }
+                            
+                        }, label: {
+                            
+                            Text("Cancel")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 17, weight: .regular))
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 45)
+                            
+                        })
+                    }
+                    .padding(.top, 30)
+
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 20).fill(Color("bg")))
+                .padding()
+                .offset(y: viewModel.isDelete ? 0 : UIScreen.main.bounds.height)
+            }
+        )
     }
 }
 

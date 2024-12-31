@@ -20,10 +20,32 @@ struct EventsView: View {
             
             VStack {
                 
-                Text("Events")
-                    .foregroundColor(.black)
-                    .font(.system(size: 22, weight: .semibold))
-                    .padding(.bottom, 30)
+                ZStack {
+                    
+                    Text("Events")
+                        .foregroundColor(.black)
+                        .font(.system(size: 22, weight: .semibold))
+                 
+                    HStack {
+                        
+                        Button(action: {
+                            
+                            withAnimation(.spring()) {
+                                
+                                viewModel.isAdd = true
+                            }
+                            
+                        }, label: {
+                            
+                            Image(systemName: "plus")
+                                .foregroundColor(.black)
+                                .font(.system(size: 18, weight: .medium))
+                        })
+                        
+                        Spacer()
+                    }
+                }
+                .padding(.bottom, 30)
                 
                 if viewModel.events.isEmpty {
                     
@@ -60,7 +82,7 @@ struct EventsView: View {
                         
                         VStack(spacing: 12) {
                             
-                            Text("Events (4/6)")
+                            Text("Events (\(viewModel.sumTags)/\(viewModel.sumTags)")
                                 .foregroundColor(.black)
                                 .font(.system(size: 16, weight: .semibold))
                                 .padding(.bottom, 20)
@@ -82,7 +104,7 @@ struct EventsView: View {
                             
                             VStack(spacing: 12) {
                                 
-                                Text("Posters (4/6)")
+                                Text("Posters (\(viewModel.sumPosters)/\(viewModel.sumTags))")
                                     .foregroundColor(.black)
                                     .font(.system(size: 16, weight: .semibold))
                                     .padding(.bottom, 20)
@@ -102,50 +124,7 @@ struct EventsView: View {
                             
                             VStack(spacing: 12) {
                                 
-                                Text("Banners (4/6)")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .padding(.bottom, 20)
-                                
-                                Text("In progress")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 13, weight: .semibold))
-                                
-                                RoundedRectangle(cornerRadius: 7)
-                                    .fill(.gray.opacity(0.3))
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 4)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(.white))
-                        }
-                        
-                        HStack {
-                            
-                            VStack(spacing: 12) {
-                                
-                                Text("Brochures (4/6)")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .padding(.bottom, 20)
-                                
-                                Text("In progress")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 13, weight: .semibold))
-                                
-                                RoundedRectangle(cornerRadius: 7)
-                                    .fill(.gray.opacity(0.3))
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 4)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(.white))
-                            
-                            VStack(spacing: 12) {
-                                
-                                Text("Menus (4/6)")
+                                Text("Banners (\(viewModel.sumBanners)/\(viewModel.sumTags))")
                                     .foregroundColor(.black)
                                     .font(.system(size: 16, weight: .semibold))
                                     .padding(.bottom, 20)
@@ -168,7 +147,7 @@ struct EventsView: View {
                             
                             VStack(spacing: 12) {
                                 
-                                Text("Booklet (4/6)")
+                                Text("Brochures (\(viewModel.sumBrochures)/\(viewModel.sumTags))")
                                     .foregroundColor(.black)
                                     .font(.system(size: 16, weight: .semibold))
                                     .padding(.bottom, 20)
@@ -188,7 +167,50 @@ struct EventsView: View {
                             
                             VStack(spacing: 12) {
                                 
-                                Text("Navigation sings (4/6)")
+                                Text("Menus (\(viewModel.sumMenus)/\(viewModel.sumTags))")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .padding(.bottom, 20)
+                                
+                                Text("In progress")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 13, weight: .semibold))
+                                
+                                RoundedRectangle(cornerRadius: 7)
+                                    .fill(.gray.opacity(0.3))
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 4)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 15).fill(.white))
+                        }
+                        
+                        HStack {
+                            
+                            VStack(spacing: 12) {
+                                
+                                Text("Booklet (\(viewModel.sumBooklets)/\(viewModel.sumTags))")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .padding(.bottom, 20)
+                                
+                                Text("In progress")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 13, weight: .semibold))
+                                
+                                RoundedRectangle(cornerRadius: 7)
+                                    .fill(.gray.opacity(0.3))
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 4)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 15).fill(.white))
+                            
+                            VStack(spacing: 12) {
+                                
+                                Text("Navigation sings (\(viewModel.sumNav)/\(viewModel.sumTags))")
                                     .foregroundColor(.black)
                                     .font(.system(size: 14, weight: .semibold))
                                     .padding(.bottom, 20)

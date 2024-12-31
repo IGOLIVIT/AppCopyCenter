@@ -68,28 +68,49 @@ class CoreDataStack {
         }
     }
 
-//    func deleteEquip(withEqName name: String, completion: @escaping () -> Void) {
-//
-//        let context = CoreDataStack.shared.persistentContainer.viewContext
-//        let fetchRequest: NSFetchRequest<EquipModel> = EquipModel.fetchRequest()
-//
-//        fetchRequest.predicate = NSPredicate(format: "eqName == %@", name)
-//
-//        do {
-//            let objects = try context.fetch(fetchRequest)
-//
-//            for object in objects {
-//                context.delete(object)
-//            }
-//
-//            CoreDataStack.shared.saveContext()
-//
-//            completion()
-//
-//        } catch {
-//            print("Error fetching: \(error)")
-//        }
-//    }
+    func deleteEvent(withEvName name: String, completion: @escaping () -> Void) {
 
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<EventsModel> = EventsModel.fetchRequest()
 
+        fetchRequest.predicate = NSPredicate(format: "evName == %@", name)
+
+        do {
+            let objects = try context.fetch(fetchRequest)
+
+            for object in objects {
+                context.delete(object)
+            }
+
+            CoreDataStack.shared.saveContext()
+
+            completion()
+
+        } catch {
+            print("Error fetching: \(error)")
+        }
+    }
+
+    func deleteList(withChName name: String, completion: @escaping () -> Void) {
+
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<CheckModel> = CheckModel.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(format: "chName == %@", name)
+
+        do {
+            let objects = try context.fetch(fetchRequest)
+
+            for object in objects {
+                context.delete(object)
+            }
+
+            CoreDataStack.shared.saveContext()
+
+            completion()
+
+        } catch {
+            print("Error fetching: \(error)")
+        }
+    }
 }
