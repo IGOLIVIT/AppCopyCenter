@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23B74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CheckModel" representedClassName="CheckModel" syncable="YES" codeGenerationType="class">
+        <attribute name="chCL" optional="YES" attributeType="String"/>
+        <attribute name="chDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="chDF" optional="YES" attributeType="String"/>
+        <attribute name="chName" optional="YES" attributeType="String"/>
+        <attribute name="chPFT" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="EventsModel" representedClassName="EventsModel" syncable="YES" codeGenerationType="class">
+        <attribute name="evAddImage" optional="YES" attributeType="String"/>
+        <attribute name="evAddress" optional="YES" attributeType="String"/>
+        <attribute name="evAddText" optional="YES" attributeType="String"/>
+        <attribute name="evChImage" optional="YES" attributeType="String"/>
+        <attribute name="evCL" optional="YES" attributeType="String"/>
+        <attribute name="evDate" optional="YES" attributeType="String"/>
+        <attribute name="evMail" optional="YES" attributeType="String"/>
+        <attribute name="evName" optional="YES" attributeType="String"/>
+        <attribute name="evPAddIm" optional="YES" attributeType="String"/>
+        <attribute name="evPAddText" optional="YES" attributeType="String"/>
+        <attribute name="evPChText" optional="YES" attributeType="String"/>
+        <attribute name="evPCL" optional="YES" attributeType="String"/>
+        <attribute name="evPSelSize" optional="YES" attributeType="String"/>
+        <attribute name="evTag" optional="YES" attributeType="String"/>
+    </entity>
+</model>
