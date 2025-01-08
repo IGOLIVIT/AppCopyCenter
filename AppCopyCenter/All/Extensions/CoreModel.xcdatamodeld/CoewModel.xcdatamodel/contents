@@ -5,7 +5,9 @@
         <attribute name="chDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="chDF" optional="YES" attributeType="String"/>
         <attribute name="chName" optional="YES" attributeType="String"/>
+        <attribute name="chNewStatus" optional="YES" attributeType="String"/>
         <attribute name="chPFT" optional="YES" attributeType="String"/>
+        <attribute name="chStatus" optional="YES" attributeType="String"/>
     </entity>
     <entity name="EventsModel" representedClassName="EventsModel" syncable="YES" codeGenerationType="class">
         <attribute name="evAddImage" optional="YES" attributeType="String"/>

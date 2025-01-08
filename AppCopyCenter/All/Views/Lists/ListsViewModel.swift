@@ -14,6 +14,9 @@ final class ListsViewModel: ObservableObject {
     @Published var curPFT = ""
     @Published var curDF = ""
     
+    @Published var statuses: [String] = ["Not Started", "Done", "In Progress"]
+    @Published var curStatus = ""
+    
     @Published var ckeck: [String] = ["Print File", "Check Text", "Check Image", "Add Text", "Add Image"]
     @Published var curCkeck = ""
 
@@ -25,6 +28,8 @@ final class ListsViewModel: ObservableObject {
     @Published var chPFT: String = ""
     @Published var chDF: String = ""
     @Published var chCL: String = ""
+    @Published var chStatus: String = ""
+    @Published var chNewStatus: String = ""
     @Published var chDate: Date = Date()
 
     @Published var lists: [CheckModel] = []
@@ -40,6 +45,8 @@ final class ListsViewModel: ObservableObject {
         loan.chDF = chDF
         loan.chCL = chCL
         loan.chDate = chDate
+        loan.chStatus = chStatus
+        loan.chNewStatus = chNewStatus
 
         CoreDataStack.shared.saveContext()
     }

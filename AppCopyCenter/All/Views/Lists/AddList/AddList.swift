@@ -178,11 +178,47 @@ struct AddList: View {
                                     
                                 })
                             }
+                            
+                            Text("Status")
+                                .foregroundColor(.black)
+                                .font(.system(size: 18, weight: .semibold))
+                            
+                            ForEach(viewModel.statuses, id: \.self) { index in
+                            
+                                Button(action: {
+                                    
+                                    viewModel.curStatus = index
+                                    
+                                }, label: {
+                                    
+                                    HStack {
+                                        
+                                        ZStack {
+                                            
+                                            Circle()
+                                                .fill(.white)
+                                                .frame(width: 30)
+                                            
+                                            Circle()
+                                                .fill(Color("prim"))
+                                                .frame(width: 17)
+                                                .opacity(viewModel.curStatus == index ? 1 : 0)
+                                        }
+                                        
+                                        Text(index)
+                                            .foregroundColor(.black)
+                                            .font(.system(size: 18, weight: .regular))
+                                    }
+                                    
+                                })
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom)
                         
                         Button(action: {
+                            
+                            viewModel.chStatus = viewModel.curStatus
                             
                             viewModel.chDF = viewModel.curDF
                             viewModel.chPFT = viewModel.curPFT
@@ -194,6 +230,7 @@ struct AddList: View {
                             viewModel.curDF = ""
                             viewModel.curPFT = ""
                             viewModel.curCkeck = ""
+                            viewModel.curStatus = ""
                             
                             viewModel.fetchLists()
                             

@@ -113,4 +113,29 @@ class CoreDataStack {
             print("Error fetching: \(error)")
         }
     }
+    
+    func updateGoal(withchName name: String, chNewStatus: String?) {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<CheckModel> = CheckModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "chName == %@", name)
+
+        do {
+            let goals = try context.fetch(fetchRequest)
+            
+            if let goal = goals.first {
+                // Обновляем атрибуты, если они переданы
+                if let chNewStatus = chNewStatus {
+                    goal.chStatus = chNewStatus
+                }
+
+                try context.save()
+                print("Diary updated successfully!")
+                
+            } else {
+                print("Diary not found")
+            }
+        } catch let error {
+            print("Failed to fetch or update diary: \(error)")
+        }
+    }
 }

@@ -101,6 +101,25 @@ struct ListsView: View {
                                             .foregroundColor(.black)
                                             .font(.system(size: 16, weight: .semibold))
                                         
+                                        if index.chStatus == "Done" {
+                                            
+                                            Text(index.chStatus ?? "")
+                                                .foregroundColor(.green)
+                                                .font(.system(size: 16, weight: .semibold))
+                                            
+                                        } else if index.chStatus == "In Progress" {
+                                            
+                                            Text(index.chStatus ?? "")
+                                                .foregroundColor(Color("prim"))
+                                                .font(.system(size: 16, weight: .semibold))
+                                            
+                                        } else {
+                                            
+                                            Text(index.chStatus ?? "")
+                                                .foregroundColor(.black.opacity(0.7))
+                                                .font(.system(size: 16, weight: .semibold))
+                                        }
+                                        
                                         Spacer()
                                         
                                         HStack {
@@ -120,8 +139,6 @@ struct ListsView: View {
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 120)
                                     .background(RoundedRectangle(cornerRadius: 20).fill(.white))
-                                    .background(RoundedRectangle(cornerRadius: 20).stroke(Color("prim")))
-                                    .padding(1)
                                 })
                             }
                         })
